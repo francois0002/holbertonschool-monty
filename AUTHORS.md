@@ -5,3 +5,5 @@
 - Alexis Billemont : alexis.billemont@holbertonstudents.com
 
 - François Gosselin : gosselin.francois@holbertonstudents.com
+
+- Mhamed Abdelmalek : mhamed.abdelmalek@holbertonstudents.com

@@ -1,6 +1,11 @@
 #include "monty.h"
 
-/***/
+/**
+* function_push - Add a new node at the end of a stack_t list.
+* @stack: pointer to the head of a stack_t list.
+* @line_number: line number of the opcode.
+* Return: 0 on success.
+*/
 
 int function_push(stack_t **stack, unsigned int line_number)
 {
@@ -33,9 +38,15 @@ int function_push(stack_t **stack, unsigned int line_number)
 	return (0);
 }
 
-/***/
+/**
+* function_pall - Print all the elements of a stack_t list.
+* @stack: pointer to the head of a stack_t list.
+* @line_number: line number of the opcode.
+* Return: 0 on success.
+*/
 
-int function_pall(stack_t **stack, __attribute__((unused))unsigned int line_number)
+int function_pall(stack_t **stack, __attribute__((unused))unsigned int
+line_number)
 {
 	if (*stack != NULL)
 	{
@@ -56,9 +67,15 @@ int function_pall(stack_t **stack, __attribute__((unused))unsigned int line_numb
 	return (0);
 }
 
-/***/
+/**
+* function_pint - Print the value at the top of the stack.
+* @stack: pointer to the head of a stack_t list.
+* @line_number: line number of the opcode.
+* Return: 0 on success.
+*/
 
-int function_pint(stack_t **stack, __attribute__((unused))unsigned int line_number)
+int function_pint(stack_t **stack, __attribute__((unused))unsigned int
+line_number)
 {
 	if (*stack != NULL)
 	{
@@ -79,9 +96,15 @@ int function_pint(stack_t **stack, __attribute__((unused))unsigned int line_numb
 	}
 }
 
-/***/
+/**
+* function_pop - Remove the top element of the stack.
+* @stack: pointer to the head of a stack_t list.
+* @line_number: line number of the opcode.
+* Return: 0 on success.
+*/
 
-int function_pop(stack_t **stack, __attribute__((unused))unsigned int line_number)
+int function_pop(stack_t **stack, __attribute__((unused))unsigned int
+line_number)
 {
 	if (*stack != NULL)
 	{
@@ -111,9 +134,15 @@ int function_pop(stack_t **stack, __attribute__((unused))unsigned int line_numbe
 	}
 }
 
-/***/
+/**
+* function_swap - Swap the top two elements of the stack.
+* @stack: pointer to the head of a stack_t list.
+* @line_number: line number of the opcode.
+* Return: 0 on success.
+*/
 
-int function_swap(stack_t **stack, __attribute__((unused))unsigned int line_number)
+int function_swap(stack_t **stack, __attribute__((unused))unsigned int
+line_number)
 {
 	int temp_value;
 	stack_t *temp = *stack;
@@ -133,34 +162,5 @@ int function_swap(stack_t **stack, __attribute__((unused))unsigned int line_numb
 	temp->prev->n = temp->n;
 	temp->n = temp_value;
 
-	return (0);
-}
-
-/***/
-
-int function_add(stack_t **stack, __attribute__((unused))unsigned int line_number)
-{
-	stack_t *temp = *stack;
-
-	if (temp == NULL || temp->next == NULL)
-	{
-		printf("L<line_number>: can't add, stack too short\n");
-		exit(EXIT_FAILURE);
-	}
-
-	while (temp->next != NULL)
-	{
-		temp = temp->next;
-	}
-
-	temp->prev->n += temp->n;
-
-	return (function_pop(stack, line_number));
-}
-
-/***/
-
-int function_nop(__attribute__((unused))stack_t **stack, __attribute__((unused))unsigned int line_number)
-{
 	return (0);
 }
