@@ -14,7 +14,7 @@ int function_push(stack_t **stack, unsigned int line_number)
 
 	if (new == NULL)
 	{
-		return (NULL);
+		return (-1);
 	}
 
 	new->n = line_number;
@@ -52,16 +52,18 @@ line_number)
 	{
 		stack_t *temp = *stack;
 
+	/* go to the end of stack*/
 		while (temp->next != NULL)
 		{
 			temp = temp->next;
 		}
-
+	/* print the first of stack*/
 		while (temp->prev != NULL)
 		{
-			printf("%i\n", temp->n);
+			printf("%d\n", temp->n);
 			temp = temp->prev;
 		}
+		printf("%d\n", temp->n);
 	}
 
 	return (0);
