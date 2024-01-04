@@ -79,7 +79,7 @@ line_number)
 int function_pint(stack_t **stack, __attribute__((unused))unsigned int
 line_number)
 {
-	if (*stack != NULL)
+	if (*stack == NULL)
 	{
 		printf("L<line_number>: can't pint, stack empty\n");
 		exit(EXIT_FAILURE);
