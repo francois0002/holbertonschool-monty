@@ -15,7 +15,7 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	unsigned int push_number;
 	stack_t *stack = NULL;
-	int (*function_ptr)(stack_t **, unsigned int);
+	void (*function_ptr)(stack_t **, unsigned int);
 
 	if (argc != 2)
 	{
@@ -63,18 +63,12 @@ int main(int argc, char *argv[])
 				exit(EXIT_FAILURE);
 			}
 
-			if (function_ptr(&stack, push_number) != 0)
-			{
-				fprintf(stderr, "Error: Execution failed at line %u\n", line_number);
-				free(line);
-				fclose(file);
-				exit(EXIT_FAILURE);
-			}
+			function_ptr(&stack, push_number);
 		}
 	}
 
 	free(line);
 	fclose(file);
 
-	return (0);
+	return (EXIT_SUCCESS);
 }

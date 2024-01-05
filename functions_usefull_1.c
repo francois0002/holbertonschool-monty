@@ -7,14 +7,15 @@
 * Return: 0 on success.
 */
 
-int function_push(stack_t **stack, unsigned int line_number)
+void function_push(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 	stack_t *new = malloc(sizeof(stack_t));
 
 	if (new == NULL)
 	{
-		return (-1);
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
 	}
 
 	new->n = line_number;
@@ -34,8 +35,6 @@ int function_push(stack_t **stack, unsigned int line_number)
 		new->prev = temp;
 		temp->next = new;
 	}
-
-	return (0);
 }
 
 /**
@@ -45,7 +44,7 @@ int function_push(stack_t **stack, unsigned int line_number)
 * Return: 0 on success.
 */
 
-int function_pall(stack_t **stack, __attribute__((unused))unsigned int
+void function_pall(stack_t **stack, __attribute__((unused))unsigned int
 line_number)
 {
 	if (*stack != NULL)
@@ -65,8 +64,6 @@ line_number)
 		}
 		printf("%d\n", temp->n);
 	}
-
-	return (0);
 }
 
 /**
@@ -76,12 +73,11 @@ line_number)
 * Return: 0 on success.
 */
 
-int function_pint(stack_t **stack, __attribute__((unused))unsigned int
-line_number)
+void function_pint(stack_t **stack, unsigned int line_number)
 {
 	if (*stack == NULL)
 	{
-		printf("L<line_number>: can't pint, stack empty\n");
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -94,7 +90,6 @@ line_number)
 		}
 
 		printf("%i\n", temp->n);
-		return (0);
 	}
 }
 
@@ -105,8 +100,7 @@ line_number)
 * Return: 0 on success.
 */
 
-int function_pop(stack_t **stack, __attribute__((unused))unsigned int
-line_number)
+void function_pop(stack_t **stack, unsigned int line_number)
 {
 	if (*stack != NULL)
 	{
@@ -127,11 +121,10 @@ line_number)
 		}
 
 		free(temp);
-		return (0);
 	}
 	else
 	{
-		printf("L<line_number>: can't pop an empty stack\n");
+		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -143,15 +136,14 @@ line_number)
 * Return: 0 on success.
 */
 
-int function_swap(stack_t **stack, __attribute__((unused))unsigned int
-line_number)
+void function_swap(stack_t **stack, unsigned int line_number)
 {
 	int temp_value;
 	stack_t *temp = *stack;
 
 	if (temp == NULL || temp->next == NULL)
 	{
-		printf("L<line_number>: can't swap, stack too short\n");
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -163,6 +155,4 @@ line_number)
 	temp_value = temp->prev->n;
 	temp->prev->n = temp->n;
 	temp->n = temp_value;
-
-	return (0);
 }

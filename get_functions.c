@@ -8,7 +8,7 @@
 *Return: NULL
 */
 
-int (*get_fonctions(char *command))(stack_t **stack, unsigned int line_number)
+void (*get_fonctions(char *command))(stack_t **stack, unsigned int line_number)
 {
 	instruction_t fonction_pointeur[] = {
 		{"push", function_push},

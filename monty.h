@@ -35,18 +35,18 @@ typedef struct instruction_s
 {
 	char *opcode;
 
-	int (*f)(stack_t **stack, unsigned int line_number);
+	void (*f)(stack_t **stack, unsigned int line_number);
 
 } instruction_t;
 
-int (*get_fonctions(char *command))(stack_t **stack, unsigned int line_number);
-int function_push(stack_t **stack, unsigned int line_number);
-int function_pall(stack_t **stack, unsigned int line_number);
-int function_pint(stack_t **stack, unsigned int line_number);
-int function_pop(stack_t **stack, unsigned int line_number);
-int function_swap(stack_t **stack, unsigned int line_number);
-int function_add(stack_t **stack, unsigned int line_number);
-int function_nop(stack_t **stack, unsigned int line_number);
+void (*get_fonctions(char *command))(stack_t **stack, unsigned int line_number);
+void function_push(stack_t **stack, unsigned int line_number);
+void function_pall(stack_t **stack, unsigned int line_number);
+void function_pint(stack_t **stack, unsigned int line_number);
+void function_pop(stack_t **stack, unsigned int line_number);
+void function_swap(stack_t **stack, unsigned int line_number);
+void function_add(stack_t **stack, unsigned int line_number);
+void function_nop(stack_t **stack, unsigned int line_number);
 
 
 #endif

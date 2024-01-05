@@ -7,14 +7,13 @@
 * Return: 0 on success.
 */
 
-int function_add(stack_t **stack, __attribute__((unused))unsigned int
-line_number)
+void function_add(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 
 	if (temp == NULL || temp->next == NULL)
 	{
-		printf("L<line_number>: can't add, stack too short\n");
+		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
@@ -25,7 +24,7 @@ line_number)
 
 	temp->prev->n += temp->n;
 
-	return (function_pop(stack, line_number));
+	function_pop(stack, line_number);
 }
 
 /**
@@ -35,8 +34,8 @@ line_number)
 * Return: 0 on success.
 */
 
-int function_nop(__attribute__((unused))stack_t **stack,
+void function_nop(__attribute__((unused))stack_t **stack,
 __attribute__((unused))unsigned int line_number)
 {
-	return (0);
+	return;
 }
