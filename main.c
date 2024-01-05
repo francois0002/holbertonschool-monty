@@ -15,6 +15,7 @@ int main(int argc, char *argv[])
 	unsigned int line_number = 0;
 	unsigned int push_number;
 	stack_t *stack = NULL;
+	void (*function_ptr)(stack_t **stack, unsigned int line_number);
 
 	if (argc != 2)
 	{
@@ -32,7 +33,7 @@ int main(int argc, char *argv[])
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
-		char *command = strtok(line, " \n\t\r");
+		char *command = strtok(line, " \t\n");
 
 		if (command != NULL && command[0] != '#')
 		{
@@ -51,11 +52,18 @@ int main(int argc, char *argv[])
 			{
 				push_number = line_number;
 			}
+			function_ptr = get_fonctions(command);
+			if (function_ptr == NULL)
+			{
+				fprintf(stderr, "L%u: unknown instruction %s\n", line_number, command);
+				free(line);
+				fclose(file);
+				exit(EXIT_FAILURE);
+			}
 
-			get_fonctions(command, &stack, push_number);
+			function_ptr(&stack, push_number);
 		}
 	}
-
 	free(line);
 	fclose(file);
 
