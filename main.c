@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-    /* Read the file line by line */
+    /* Read the file line by lines */
 	while (getline(&line, &len, file) != -1)
 	{
 		line_number++;
