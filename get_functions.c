@@ -8,7 +8,7 @@
 *Return: NULL
 */
 
-void (*get_fonctions(char *command))(stack_t **stack, unsigned int line_number)
+void get_fonctions(char *command, stack_t **stack, unsigned int line_number)
 {
 	instruction_t fonction_pointeur[] = {
 		{"push", function_push},
@@ -26,9 +26,9 @@ void (*get_fonctions(char *command))(stack_t **stack, unsigned int line_number)
 	{
 		if (strcmp(fonction_pointeur[index].opcode, command) == 0)
 		{
-			return (fonction_pointeur[index].f);
+			fonction_pointeur[index].f(stack, line_number);
 		}
 		index++;
 	}
-	return (NULL);
+	return;
 }
