@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "USAGE: %s <file>\n", argv[0]);
 		exit(EXIT_FAILURE);
 	}
-    /* Open the .m file*/
+    /* Open the .m file */
 	file = fopen(argv[1], "r");
 	if (file == NULL)
 	{
